@@ -1,0 +1,363 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Arial", sans-serif;
+    background-color: #520606;
+    color: white;
+    overflow-x: hidden;
+    width: 100%;
+}
+
+/* Header Styles */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 9vh;
+    width: 100%;
+    padding: 0 20px;
+    position: relative;
+    font-family: "Chewy", system-ui;
+    font-style: normal;
+}
+
+.logo {
+    font-size: 3rem;
+    font-weight: bold;
+    color: white;
+    display: flex;
+    justify-content: flex-start;
+    padding: 0 15px;
+    border-radius: 5px;
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    padding: 0 15px;
+    border-radius: 5px;
+}
+
+.nav-item {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-item-contact {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-item::before,
+.nav-item-contact::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 182, 193, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.nav-item:hover,
+.nav-item-contact:hover {
+    color: #ffb6c1;
+    background-color: rgba(255, 182, 193, 0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 182, 193, 0.3);
+}
+
+.nav-item:hover::before,
+.nav-item-contact:hover:before {
+    left: 100%;
+}
+
+.nav-item.active,
+.nav-item-contact.active {
+    color: #ffb6c1;
+    background-color: rgba(255, 182, 193, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 182, 193, 0.4);
+}
+
+/* Main Content */
+.main-content {
+    min-height: 91vh;
+    padding: 40px 20px;
+    font-family: "Chewy", system-ui;
+}
+
+.projects-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.projects-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.page-title {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.projects-subtitle {
+    font-size: 1.3rem;
+    font-weight: 300;
+    color: #ffb6c1;
+}
+
+.highlight {
+    color: #FFC4E1;
+}
+
+/* Projects Grid */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+    margin: 60px 0;
+}
+
+.project-card {
+    background: rgba(255, 196, 225, 0.1);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    animation: float 6s ease-in-out infinite;
+    animation-delay: calc(var(--i) * 0.2s);
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    border-color: #FFC4E1;
+    box-shadow: 0 15px 40px rgba(255, 196, 225, 0.3);
+}
+
+.project-image {
+    position: relative;
+    overflow: hidden;
+    height: 200px;
+}
+
+.project-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.project-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(82, 6, 6, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.project-card:hover .project-overlay {
+    opacity: 1;
+}
+
+.project-card:hover .project-img {
+    transform: scale(1.1);
+}
+
+.project-links {
+    display: flex;
+    gap: 20px;
+}
+
+.project-link {
+    background: #FFC4E1;
+    color: #520606;
+    padding: 10px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.project-link:hover {
+    background: #ffb6c1;
+    transform: scale(1.05);
+}
+
+.project-info {
+    padding: 30px;
+}
+
+.project-title {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: #FFC4E1;
+}
+
+.project-description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    font-weight: 300;
+}
+
+.project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tech-tag {
+    background: rgba(255, 196, 225, 0.2);
+    color: #FFC4E1;
+    padding: 5px 15px;
+    border-radius: 15px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* CTA Section */
+.cta-section {
+    text-align: center;
+    margin-top: 60px;
+}
+
+.action-cloud {
+    background: #FFC4E1;
+    color: #520606;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    margin: 0 10px;
+    animation: floatButton 6s ease-in-out infinite;
+}
+
+.action-cloud:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 25px rgba(255, 182, 193, 0.5);
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+@keyframes floatButton {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header {
+        padding: 15px 20px;
+        flex-direction: column;
+        gap: 20px;
+        height: auto;
+    }
+
+    .nav-menu {
+        gap: 15px;
+        justify-content: center;
+        padding: 10px;
+    }
+
+    .nav-item {
+        font-size: 1rem;
+        padding: 6px 12px;
+    }
+
+    .page-title {
+        font-size: 3rem;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .project-card {
+        margin: 0 auto;
+        max-width: 400px;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-content {
+        padding: 30px 15px;
+    }
+
+    .page-title {
+        font-size: 2.5rem;
+    }
+
+    .projects-subtitle {
+        font-size: 1.1rem;
+    }
+
+    .project-info {
+        padding: 20px;
+    }
+
+    .project-title {
+        font-size: 1.5rem;
+    }
+
+    .project-description {
+        font-size: 1rem;
+    }
+
+    .action-cloud {
+        display: block;
+        margin: 10px auto;
+        width: 200px;
+    }
+}

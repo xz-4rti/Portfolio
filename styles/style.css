@@ -1,0 +1,397 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Arial", sans-serif;
+  background-color: #520606;
+  color: white;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* Header Styles */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 9vh;
+  width: 100%;
+  padding: 0 20px;
+  position: relative;
+  font-family: "Chewy", system-ui;
+  font-style: normal;
+}
+
+.logo {
+  font-size: 3rem;
+  font-weight: bold;
+  color: white;
+  display: flex;
+  justify-content: flex-start;
+  padding: 0 15px;
+  border-radius: 5px;
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  padding: 0 15px;
+  border-radius: 5px;
+}
+
+.nav-item {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-item-contact {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-item::before,
+.nav-item-contact::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 182, 193, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.nav-item:hover,
+.nav-item-contact:hover {
+  color: #ffb6c1;
+  background-color: rgba(255, 182, 193, 0.1);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 182, 193, 0.3);
+}
+
+.nav-item:hover::before,
+.nav-item-contact:hover:before {
+  left: 100%;
+}
+
+.nav-item.active,
+.nav-item-contact.active {
+  color: #ffb6c1;
+  background-color: rgba(255, 182, 193, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 182, 193, 0.4);
+}
+
+/* Main Content */
+.main-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  height: 90vh;
+  width: 100%;
+  padding: 60px 20px;
+  gap: 40px;
+  font-family: "Chewy", system-ui;
+  font-style: normal;
+}
+
+.content-left {
+  flex: 1;
+  max-width: 600px;
+}
+
+.greeting {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  font-weight: 300;
+}
+
+.name {
+  font-size: 5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  line-height: 1.1;
+}
+
+.title {
+  font-size: 1.8rem;
+  margin-bottom: 30px;
+  font-weight: 300;
+}
+
+.welcome {
+  font-size: 1.3rem;
+  margin-bottom: 40px;
+  font-weight: 300;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.highlight {
+  color: #ffc4e1;
+}
+
+/* Enhanced Action Cloud Buttons */
+.action-cloud {
+  background: #ffc4e1;
+  color: #520606;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 30px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.5s ease-out, transform 0.3s ease;
+  position: relative;
+  text-decoration: none;
+  display: inline-block;
+  will-change: transform;
+  animation: floatButton 6s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 0.1s);
+}
+
+.action-cloud:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 25px rgba(255, 182, 193, 0.5);
+}
+
+.action-cloud.active {
+  background: linear-gradient(135deg, #ff91a4, #ffb6c1);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(255, 182, 193, 0.4);
+  color: #6b0f2a;
+}
+
+/* Floating Animation Styles */
+.photo-cloud-container {
+  max-width: 100%;
+  overflow: hidden;
+  animation: float 4s ease-in-out infinite;
+  transform-origin: center center;
+  animation-delay: calc(var(--i) * 0.5s);
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cloud-shape {
+  width: 100%;
+  height: auto;
+  max-width: 44vw;
+  position: relative;
+  z-index: 1;
+}
+
+.cloud-shape-image {
+  position: absolute;
+  top: 53%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 51%; /* Make it smaller than the cloud */
+  height: auto;
+  z-index: 2; /* Place it above the cloud */
+  border-radius: 50%; /* Optional: make it circular */
+  object-fit: cover;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-30px);
+  }
+}
+
+@keyframes floatButton {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Mobile Landscape */
+@media (max-width: 768px) {
+  .header {
+    padding: 15px 20px;
+    flex-direction: column;
+    gap: 20px;
+    height: auto;
+  }
+
+  .logo,
+  .nav-menu {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .nav-menu {
+    gap: 15px;
+    justify-content: center;
+    padding: 10px;
+  }
+
+  .nav-item {
+    font-size: 1rem;
+    padding: 6px 12px;
+  }
+
+  .main-content {
+    flex-direction: column;
+    text-align: center;
+    padding: 40px 20px;
+    gap: 40px;
+    height: auto;
+  }
+
+  .photo-cloud-container {
+    width: 320px;
+    height: 250px;
+    margin: 0;
+    order: -1;
+    position: relative;
+  }
+
+  .cloud-shape-image {
+    width: 55%;
+  }
+
+  .name {
+    font-size: 3rem;
+  }
+
+  .greeting {
+    font-size: 1.3rem;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .welcome {
+    font-size: 1.1rem;
+  }
+
+  .action-buttons {
+    justify-content: center;
+  }
+}
+
+/* Mobile Portrait */
+@media (max-width: 480px) {
+  .header {
+    padding: 15px;
+  }
+
+  .logo {
+    font-size: 2rem;
+  }
+
+  .nav-menu {
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .nav-item {
+    font-size: 0.9rem;
+    padding: 5px 10px;
+  }
+
+  .main-content {
+    padding: 30px 15px;
+    gap: 30px;
+  }
+
+  .photo-cloud-container {
+    width: 280px;
+    height: 220px;
+    position: relative;
+  }
+
+  .cloud-shape-image {
+    width: 50%;
+  }
+
+  .name {
+    font-size: 2.5rem;
+    line-height: 1.2;
+  }
+
+  .greeting {
+    font-size: 1.2rem;
+  }
+
+  .title {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+  }
+
+  .welcome {
+    font-size: 1rem;
+    margin-bottom: 30px;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .action-cloud {
+    padding: 12px 25px;
+    font-size: 1.1rem;
+    width: 200px;
+    text-align: center;
+  }
+}
+
+/* Extra Small Mobile */
+@media (max-width: 360px) {
+  .logo {
+    font-size: 1.8rem;
+  }
+
+  .photo-cloud-container {
+    width: 250px;
+    height: 200px;
+    position: relative;
+  }
+
+  .cloud-shape-image {
+    width: 45%;
+  }
+
+  .name {
+    font-size: 2.2rem;
+  }
+}
